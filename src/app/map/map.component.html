@@ -1,0 +1,53 @@
+<div class="box ">
+  <h1>{{ title }}</h1>
+  <div class=" panel panel-primary">
+    <h3 class="panel-heading">pick a root by clicking the map</h3>
+    <div class=" panel-body">
+      <button class="btn btn-default" (click)="changeCurentPos()">Select/Unselect curent position </button>
+      <div>
+        <form [formGroup]="myForm" (ngSubmit)="newupdateDirections()" #form="ngForm">
+          <div class="smallBox">
+            <label> Select gender </label>
+            <select class="form-control" #gender >
+      <option *ngFor="let c of type" [ngValue]="c"> {{c.value}} </option>
+    </select><br>
+            <label>Select  walking type</label>
+            <select class="form-control" #steps>
+      <option *ngFor="let c of pas" [ngValue]="c" > {{c.value}} </option>
+    </select><br>
+          </div>
+          <label>  type in the age </label>
+          <input class="form-control " type="number" formControlName="age" required />
+          <label>  type in the weight </label>
+          <input class="form-control " type="number" formControlName="weight" required />
+        </form>
+        
+      </div>
+      <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control searchLocation" #search [formControl]="searchControl">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)="mapClicked($event)">
+       <div *ngIf="markers">
+        <agm-marker  *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng"></agm-marker>
+       </div>
+        <ste-google-map (userUpdated)="handleUserUpdated($event)"> </ste-google-map>
+      </agm-map>
+
+      <br>
+      
+      <div>
+
+        <div>
+          <div>
+            <button class="btn btn-primary" [disabled]="!form.form.valid" (click)="newupdateDirections()">See results</button>
+            <button class="btn btn-warning" (click)="clearMarker()">clear markers</button>
+            <button class="btn btn-danger" (click)="ClearDisplay()">clear display</button>
+          </div>
+        </div>
+
+
+        <h3>Estimated travel time: {{duration}} ({{distance/1000}} km)</h3>
+        <h3>you will lose {{calories| number : '1.2-2'}} Calories burned walking </h3>
+      </div>
+    </div>
+  </div>
+
+</div>

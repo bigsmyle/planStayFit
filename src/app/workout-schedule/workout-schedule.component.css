@@ -1,0 +1,55 @@
+
+.allContent{
+    height: 100%;
+    width: 700px;
+    margin: auto
+}
+.box{
+ 
+    z-index: -1;
+}
+.headingdt{
+    background: #ffcc00;
+}
+.btn-warning{
+ background: #ffcc00;
+}
+ul { 
+    list-style-type: none; 
+    }
+li
+{
+    float: right;
+    margin-right: 10px;
+    
+
+}
+.panel-heading::after{
+clear: both;
+content: "";
+display: table;
+} 
+.edit-body{
+      
+      top: 0;
+width:900px;
+height: 100%;
+ z-index: 9999;
+
+}
+.edit{
+    top: 100px;
+   position: fixed;
+    width:700px;
+   box-shadow: 10px 10px 5px grey;
+    margin: auto;
+}
+.edit-texterea{
+margin: auto;
+width:600px;
+}
+.edit-title
+{
+margin: auto;
+width:600px;
+}

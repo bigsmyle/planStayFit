@@ -1,0 +1,79 @@
+<div class="allContent">
+    <div class="box">
+        <div>
+            <h3>Last estimated travel time: {{duration}} ({{distance/1000}} km)</h3>
+            <h3>You will lose {{calories| number : '1.2-2'}} calories burned walking </h3>
+        </div>
+        <div class=" panel panel-warning">
+            <div class="panel-heading headingdt">
+                <h5> Take a note: </h5>
+            </div>
+            <div class="panel-body ">
+                <form (ngSubmit)="addNote(title.value,note.value)">
+                    <div class="form-group label-floating">
+                        <input type="text" class="form-control" placeholder="Title" #title name="title" [(ngModel)]="addTitle">
+                    </div>
+                    <div class="form-group label-floating">
+                        <textarea class="form-control" autosize placeholder="The note" #note name="note" [(ngModel)]="adDNote"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-warning btn-sm pull-right" value="Submit">Add note</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div *ngFor='let n of notes;let i = index'>
+            <div class=" panel panel-default" (mouseenter)="over(true,n)" (mouseleave)="over(false,n)">
+                <div class="panel-heading">
+                   
+                    <div *ngIf="n.showButtons">
+
+                        <ul class="note-header ">
+                            <li>
+                                <a title="Delete" (click)="delete(n,i)"> <i class="glyphicon glyphicon-remove-sign"></i></a>
+                            </li>
+                            <li>
+                                <a title="Edit" (click)="edit(n)"> <i class="glyphicon glyphicon-pencil"></i></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    {{n.title}}
+                </div>
+
+                <div class="panel-body note">
+                    {{n.note}}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="showEdit" class="edit-body">
+        <div class="edit panel panel-default">
+            <div class="panel-heading">
+                <a title="Remove" (click)="removeEdit()"> <i class="glyphicon glyphicon-remove-sign pull-right"></i></a>
+                <h5>edit the note </h5>
+
+            </div>
+            <div class="panel-body ">
+                <input type="text" placeholder="Title" class="edit-title" [(ngModel)]="titleNote" #titl="ngModel">
+                <br>
+                <br>
+                <textarea class="edit-texterea" modaleditorautosize placeholder="Write a note" [(ngModel)]="editNote" #edit="ngModel"></textarea>
+
+                <br>
+                <br>
+                <br>
+                <button type="button" class="btn btn-warning btn-sm pull-right" (click)="updateNote()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

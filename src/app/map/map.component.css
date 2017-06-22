@@ -1,0 +1,27 @@
+
+.box{
+   position: static;
+  margin: auto;
+  width: 700px;
+}
+.panel-heading{
+  margin: 0;
+}
+agm-map  {
+  height: 300px;
+  width: 400px;
+  margin: auto 200px auto 200px;
+}
+
+.smallbox{
+  height: 300px;
+  padding: auto;
+  width: 300px;
+}
+form{
+  float : right;
+ width: 250px;  
+}
+.searchLocation{
+ width: 300px
+}

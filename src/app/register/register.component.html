@@ -1,0 +1,15 @@
+<div class="content box">
+<h1 class="form-signin-heading">
+    Register 
+</h1>
+
+<form [formGroup]="theForm" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <input class="form-control " formControlName="name" required placeholder="name"/> 
+     <input class="form-control " formControlName="email" required placeholder="Email"/> 
+    <input class="form-control " formControlName="username" required placeholder="Username"/> 
+     <input class="form-control " formControlName="password" required type="password" placeholder="password"/> 
+    <br>
+    <br>
+     <button class="btn btn-primary" type="submit" [disabled]="!registerForm.form.valid">Register</button>
+     </form>
+</div>

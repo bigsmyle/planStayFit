@@ -1,0 +1,18 @@
+<div class=" box">
+<div class=" ">
+  <button (click)="returnBack( )" class="btn btn-danger pull-right">Logout</button>
+  <button (click)="toggleFlip()" class="btn btn-primary pull-left">Flip</button>
+
+
+  <div class="tp-wrapper">
+    <div class="tp-box" [@flipState]="flip">
+      <div class="tp-box__side tp-box__front">
+        <map (dataUpdated)="handleData($event)"></map>
+      </div>
+      <div class="tp-box__side tp-box__back">
+        <workout-schedule [duration]="duration" [distance]="distance" [calories]="calories"> </workout-schedule>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
